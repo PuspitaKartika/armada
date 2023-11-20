@@ -1,3 +1,4 @@
+import 'package:armada/view/dasboard_screen.dart';
 import 'package:armada/view/login/login_screen.dart';
 import 'package:armada/view/login/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
-        '/login': (context) => const LoginScreen()
+        '/login': (context) => const LoginScreen(),
+        '/dashboard': (context) => const Dasboard(),
       },
     );
   }

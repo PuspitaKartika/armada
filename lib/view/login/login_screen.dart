@@ -55,7 +55,12 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(
                   width: MediaQuery.of(context).size.width,
-                  child: const MainButton())
+                  child: MainButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/dashboard');
+                    },
+                    title: "Masuk",
+                  ))
             ],
           ),
         ),
