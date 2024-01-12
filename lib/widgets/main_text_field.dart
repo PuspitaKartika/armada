@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class MainTextField extends StatelessWidget {
   final TextEditingController controller;
-  final String title;
+  final String? title;
   final String hintText;
   final IconButton? surfix;
 
   const MainTextField({
     super.key,
     required this.controller,
-    required this.title,
+    this.title = "",
     required this.hintText,
     this.surfix,
   });
@@ -20,13 +20,19 @@ class MainTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 4,
-        ),
+        if (title != "")
+          Column(
+            children: [
+              Text(
+                title ?? "",
+                style:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+            ],
+          ),
         TextFormField(
           controller: controller,
           decoration: InputDecoration(

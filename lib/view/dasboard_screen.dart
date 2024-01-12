@@ -1,3 +1,5 @@
+import 'package:armada/view/alutsista/alutsista_screen.dart';
+import 'package:armada/view/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class Dasboard extends StatefulWidget {
@@ -10,8 +12,8 @@ class Dasboard extends StatefulWidget {
 class _DasboardState extends State<Dasboard> {
   int currenIndex = 0;
   List bodyScreen = [
-    const Center(child: Text("home")),
-    const Center(child: Text("screen 1")),
+    const HomeScreen(),
+    const AlutsistaScreen(),
     const Center(child: Text("screen 2")),
     const Center(child: Text("screen 3")),
   ];
