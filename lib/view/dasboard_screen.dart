@@ -1,5 +1,6 @@
 import 'package:armada/view/alutsista/alutsista_screen.dart';
 import 'package:armada/view/home/home_screen.dart';
+import 'package:armada/view/riwayat/riwayatdata_screen.dart';
 import 'package:flutter/material.dart';
 
 class Dasboard extends StatefulWidget {
@@ -14,7 +15,7 @@ class _DasboardState extends State<Dasboard> {
   List bodyScreen = [
     const HomeScreen(),
     const AlutsistaScreen(),
-    const Center(child: Text("screen 2")),
+    const LogDataScreen(),
     const Center(child: Text("screen 3")),
   ];
   @override
