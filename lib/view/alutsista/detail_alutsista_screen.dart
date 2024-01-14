@@ -1,15 +1,17 @@
+import 'package:armada/model/product_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailAlutsistaSceen extends StatelessWidget {
-  const DetailAlutsistaSceen({super.key});
+  final ProductModelDatum item;
+  const DetailAlutsistaSceen({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Detail Pistol",
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        title: Text(
+          "Detail ${item.attributes?.name ?? ""}",
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -17,22 +19,29 @@ class DetailAlutsistaSceen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: Image.asset(
-                  "assets/pistol.png",
-                )),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 10),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.3,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "http://10.0.2.2:1337${item.attributes!.image!.data!.attributes?.url}"))),
+              //  child:
+              // Image.asset(
+              //   "assets/pistol.png",
+              // )
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Text(
-                "Nama Alutsista",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                item.attributes?.name ?? "",
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
             ),
-            const Text(
-              "kategori",
-              style: TextStyle(
+            Text(
+              item.attributes?.categories?.data?.first.attributes?.name ?? " ",
+              style: const TextStyle(
                 fontSize: 12,
               ),
             ),
@@ -43,9 +52,9 @@ class DetailAlutsistaSceen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
             ),
-            const Text(
-              "blablablaaaa",
-              style: TextStyle(
+            Text(
+              item.attributes?.description ?? " ",
+              style: const TextStyle(
                 fontSize: 12,
               ),
             ),
@@ -56,9 +65,9 @@ class DetailAlutsistaSceen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
             ),
-            const Text(
-              "Jenis",
-              style: TextStyle(
+            Text(
+              item.attributes?.type ?? "-",
+              style: const TextStyle(
                 fontSize: 12,
               ),
             ),

@@ -1,8 +1,11 @@
+import 'package:armada/constans/constans.dart';
+import 'package:armada/model/product_model.dart';
 import 'package:armada/view/alutsista/detail_alutsista_screen.dart';
 import 'package:flutter/material.dart';
 
 class AlutsistaCard extends StatelessWidget {
-  const AlutsistaCard({super.key});
+  final ProductModelDatum item;
+  const AlutsistaCard({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,9 @@ class AlutsistaCard extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const DetailAlutsistaSceen()));
+                builder: (context) => DetailAlutsistaSceen(
+                      item: item,
+                    )));
       },
       child: Container(
         padding: const EdgeInsets.all(5),
@@ -24,22 +29,28 @@ class AlutsistaCard extends StatelessWidget {
             ]),
         child: Column(
           children: [
-            Image.asset(
-              "assets/pistol.png",
-              width: 150,
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          "http://10.0.2.2:1337${item.attributes!.image!.data!.attributes?.url}"))),
             ),
-            const Text(
-              "Norinco QBZ-192 Senapan Serbu Angkatan Darat China",
-              style: TextStyle(fontWeight: FontWeight.bold),
+            // Image.network("${item.attributes!.image!.data!.attributes?.url}"),
+            // NetworkImage("${item.attributes!.image!.data!.attributes?.url}"),
+
+            Text(
+              item.attributes?.name ?? "",
+              style: const TextStyle(fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
             const SizedBox(
               height: 4,
             ),
-            const Text(
-              "Satuan infanteri mekanis bukan hanya populer di lingkungan TNI ADa",
-              style: TextStyle(color: Colors.grey, fontSize: 12),
+            Text(
+              item.attributes?.description ?? "",
+              style: const TextStyle(color: Colors.grey, fontSize: 12),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
             ),
